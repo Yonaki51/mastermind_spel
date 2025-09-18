@@ -1,6 +1,7 @@
 package mastermind;
 
 import java.util.Random;
+import java.util.*;
 
 public class Mastermind {
 
