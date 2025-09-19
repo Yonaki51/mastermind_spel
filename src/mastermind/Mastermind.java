@@ -1,23 +1,20 @@
 package mastermind;
 
-import java.util.Random;
 import java.util.*;
 
 public class Mastermind {
+    private static final int code_length = 4;
+        private static final Set<String> colors = Set.of(
+            "red", "blue", "yellow", "purple", "green", "orange"
+    );
 
     public static void main(String[] args) {
-        String[] colours = {"red", "blue", "yellow", "purple", "green", "orange"};
-        Random rng = new Random();
+        System.out.println("mastermind!");
+        System.out.println("Toegestane kleuren: " + String.join(", ", colors));
+        
 
-        System.out.println("geheime code: ");
-        for (int clr_combo = 0; clr_combo <4; clr_combo++) {
-            int index = rng.nextInt(colours.length);
-            String chosen =  colours[index];
-            System.out.print(chosen + " ");
-
-        }
-
-
+  
     }
+
 
 }
