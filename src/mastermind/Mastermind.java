@@ -20,8 +20,21 @@ public class Mastermind {
             System.out.print(kleur + " ");
         }
 
-        Scanner Scanner = new Scanner(System.in);
-        System.out.println("Voer 4 kleuren in, gescheiden door spaties (keuze: rood, blauw, groen, geel, oranje, paars):");
+        // laat speler raden
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer 4 kleuren in, gescheiden door spaties\n"
+                + "(keuze: rood, blauw, groen, geel, oranje, paars):");
+        String invoer = scanner.nextLine();
+
+        // zorg ervoor dat de invoer gesplitst wordt op spaties
+        String[] gok = invoer.split(" ");
+
+        // check: print gok van speler
+        System.out.println("Jouw gok:");
+        for (String kleur : gok) {
+            System.out.print(kleur + " ");
+
+        }
 
     }
 
