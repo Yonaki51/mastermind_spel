@@ -26,15 +26,20 @@ public class Mastermind {
                 + "(keuze: rood, blauw, groen, geel, oranje, paars):");
         String invoer = scanner.nextLine();
 
-        // zorg ervoor dat de invoer gesplitst wordt op spaties
-        String[] gok = invoer.split(" ");
+        // zorg ervoor dat de invoer gesplitst wordt op één of meer spaties
+        String[] gok = invoer.split("\\s+");
 
-        // check: print gok van speler
-        System.out.println("Jouw gok:");
-        for (String kleur : gok) {
-            System.out.print(kleur + " ");
+        int exactgoed = 0;
+        for (int i = 0; i < code.length && i < gok.length; i++) {
+            if (gok[i].equalsIgnoreCase(code[i])) {
+                exactgoed++;
+            }
 
         }
+        System.out.println("\nExact goed (kleur + positie): " + exactgoed);
+
+        // (debug) laat geheime code zien
+        System.out.println("(debug) Geheime code: " + String.join(" ", code));
 
     }
 
