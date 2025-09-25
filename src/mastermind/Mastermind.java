@@ -41,6 +41,19 @@ public class Mastermind {
         // (debug) laat geheime code zien
         System.out.println("(debug) Geheime code: " + String.join(" ", code));
 
+        // Kopieën maken zodat de originele variabelen niet aangepast worden
+        String[] codeCopy = code.clone();
+        String[] gokCopy = gok.clone();
+
+        // de exacte matches uit de vergelijking halen
+        for (int i = 0; i < codeCopy.length && i < gokCopy.length; i++) {
+            if (gokCopy[i].equalsIgnoreCase(codeCopy[i])) {
+                codeCopy[i] = null;
+                gokCopy[i] = null;
+                
+            }
+        }
+
     }
 
 }
