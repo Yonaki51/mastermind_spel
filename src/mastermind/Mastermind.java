@@ -23,6 +23,7 @@ public class Mastermind {
 
         // laat speler raden
         for (int beurt = 1; beurt <= maxBeurten; beurt++) {
+            System.out.println("\nBeurt " + beurt + " van " + maxBeurten);
             System.out.println("Voer 4 kleuren in, gescheiden door spaties\n"
                     + "(keuze: rood, blauw, groen, geel, oranje, paars):");
             String invoer = scanner.nextLine();
@@ -69,7 +70,7 @@ public class Mastermind {
             System.out.println("Goede kleur, verkeerde plek: " + verkeerdePlek + " -> " + verkeerdePlekKleuren);
 
             if (exactGoed == code.length) {
-                System.out.println("gefeliciteerdQ je hebt de code gekraakt!");
+                System.out.println("gefeliciteerd! Je hebt de code gekraakt!");
                 gewonnen = true;
                 break;
             }
@@ -77,8 +78,8 @@ public class Mastermind {
         }
 
         if (!gewonnen) {
-            System.out.println("helaas, je hebt de code niet kunne kraken\n" 
-            + "de geheime code was: " + String.join(" ", code));
+            System.out.println("Helaas, je hebt de code niet kunne kraken\n"
+                    + "De geheime code was: " + String.join(" ", code));
         }
     }
 
