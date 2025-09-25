@@ -21,15 +21,45 @@ public class Mastermind {
         boolean gewonnen = false;
         Scanner scanner = new Scanner(System.in);
 
-        // laat speler raden
+
         for (int beurt = 1; beurt <= maxBeurten; beurt++) {
             System.out.println("\nBeurt " + beurt + " van " + maxBeurten);
-            System.out.println("Voer 4 kleuren in, gescheiden door spaties\n"
-                    + "(keuze: rood, blauw, groen, geel, oranje, paars):");
-            String invoer = scanner.nextLine();
+            String[] gok;
+            while (true) {
+                // vraag de speler om kleuren in te voeren
+                System.out.println("Voer 4 kleuren in, gescheiden door spaties\n"
+                + "(keuze: rood, blauw, groen, geel, oranje, paars):");
+                String invoer = scanner.nextLine();
+                gok = invoer.trim().split("\\s+");
+                
+                // check de invoer van de speler
+                // Check 1: aantal woorden
+                if (gok.length != 4) {
+                    System.out.println("Ongeldige invoer: geef precies 4 kleuren.");
+                    continue;
+                }
 
-            // zorg ervoor dat de invoer gesplitst wordt op één of meer spaties
-            String[] gok = invoer.trim().split("\\s+");
+                // Check 2: zijn alle kleuren geldig?
+                boolean geldig = true;
+                for (String kleur : gok) {
+                    boolean gevonden = false;
+                    for (String k : kleuren) {
+                        if (kleur.equalsIgnoreCase(k)) {
+                            gevonden = true;
+                            break;
+                        }
+                    }
+                    if (!gevonden) {
+                        System.out.println("Ongeldige kleur: " + kleur);
+                        geldig = false;
+                        break;
+                    }
+                }
+
+                if (geldig) {
+                    break; // invoer is goed → ga verder
+                }
+            }
 
             // feedback voorbereiden in de vorm van strings
             StringBuilder exactGoedKleuren = new StringBuilder();
