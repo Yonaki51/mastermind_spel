@@ -29,50 +29,43 @@ public class Mastermind {
         // zorg ervoor dat de invoer gesplitst wordt op één of meer spaties
         String[] gok = invoer.split("\\s+");
 
-        int exactGoed = 0;
-        for (int i = 0; i < code.length && i < gok.length; i++) {
-            if (gok[i].equalsIgnoreCase(code[i])) {
-                exactGoed++;
-            }
+        // feedback voorbereiden in de vorm van strings
+        StringBuilder exactGoedKleuren = new StringBuilder();
+        StringBuilder verkeerdePlekKleuren = new StringBuilder();
 
-        }
-        System.out.println("\nExact goed (kleur + positie): " + exactGoed);
-
-        // (debug) laat geheime code zien
-        System.out.println("(debug) Geheime code: " + String.join(" ", code));
-
-        // Kopieën maken zodat de originele variabelen niet aangepast worden
         String[] codeCopy = code.clone();
         String[] gokCopy = gok.clone();
 
-        // de exacte matches uit de vergelijking halen
+        // Stap 1: exacte matches
+        int exactGoed = 0;
         for (int i = 0; i < codeCopy.length && i < gokCopy.length; i++) {
             if (gokCopy[i].equalsIgnoreCase(codeCopy[i])) {
+                exactGoed++;
+                exactGoedKleuren.append(gokCopy[i]).append(" ");
                 codeCopy[i] = null;
                 gokCopy[i] = null;
-
             }
         }
 
+        // Stap 2: verkeerde plek
         int verkeerdePlek = 0;
         for (int i = 0; i < gokCopy.length; i++) {
-            // alleen de niet exacte matches
             if (gokCopy[i] != null) {
                 for (int j = 0; j < codeCopy.length; j++) {
                     if (codeCopy[j] != null && gokCopy[i].equalsIgnoreCase(codeCopy[j])) {
-
                         verkeerdePlek++;
+                        verkeerdePlekKleuren.append(gokCopy[i]).append(" ");
                         codeCopy[j] = null;
                         break;
                     }
                 }
-
             }
-
         }
 
-        System.out.println("Exact goed: " + exactGoed);
-        System.out.println("Goede kleur, verkeerde plek: " + verkeerdePlek);
+        // Feedback printen
+        System.out.println("(debug) Geheime code: " + String.join(" ", code));
+        System.out.println("Exact goed: " + exactGoed + " -> " + exactGoedKleuren);
+        System.out.println("Goede kleur, verkeerde plek: " + verkeerdePlek + " -> " + verkeerdePlekKleuren);
 
     }
 
