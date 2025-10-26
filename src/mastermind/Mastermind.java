@@ -59,7 +59,7 @@ public class Mastermind {
                     }
 
                     if (geldig) {
-                        break; // invoer is goed → ga verder
+                        break; // invoer is goed. ga verder
                     }
                 }
 
